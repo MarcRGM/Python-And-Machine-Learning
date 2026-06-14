@@ -11,7 +11,7 @@ nltk.download('punkt', quiet=True)
 # Initialize web application
 app = Flask(__name__)
 
-# Configure logging level - see INFO messages and above
+# Configure logging level to see INFO messages 
 app.logger.setLevel(logging.INFO)
 
 def calculate_article_stats(text):
@@ -36,3 +36,46 @@ def calculate_article_stats(text):
 
     return stats
 
+@app.route('/analyze', methods=['POST'])
+def analyze_article():
+    """
+    This endpoint accepts article text and returns statistics.
+    """
+    try:
+        # Handle different input 
+        if request.is_json:
+            data = request.get_json()
+            text = data.get('text', '')
+        else:
+            text = request.form.get('text', '')
+
+        # Validate input exists
+        if not text.strip():
+            return jsonify({"error": "No text provided"}), 400
+            # 400 = Bad Request (client sent invalid data)
+
+        # Log successful processing 
+        app.logger.info(f"Processing article with {len(text)} characters")
+
+        # Process the text
+        stats = calculate_article_stats(text)
+        return jsonify(stats)
+
+    except Exception as e:
+        # Log errors
+        app.logger.error(f"Error processing request: {str(e)}")
+        return jsonify({"error": "Internal server error"}), 500
+        # 500 = Server Error (something went wrong internally)
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """
+    Health check endpoint to verify service is running.
+    """
+    return jsonify({"status": "healthy", "service": "article-stats"})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Start development server
+    # host='0.0.0.0' to make it accessible from other devices
+    # debug=True to enable auto-reload when code is edited
