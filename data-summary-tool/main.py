@@ -13,12 +13,15 @@ mean = df["age"].mean()
 median = df["age"].median()
 
 def summarize_data(df):
-    stats = {}
+    col_stats = {}
     for col in df.columns:
+        stats = {}
         if pd.api.types.is_numeric_dtype(df[col]):
             stats['mean'] = df[col].mean()
             stats['median'] = df[col].median()
             stats['std'] = df[col].std()
             stats['min'] = df[col].min()
             stats['max'] = df[col].max()
-summarize_data(df)
+        col_stats[col] = stats
+    return col_stats
+print(summarize_data(df))
