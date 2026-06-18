@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 data = {
     "age": [25, 30, 35, None, 40, 120, 29, 31],
@@ -23,6 +23,13 @@ def summarize_data(df):
             stats['min'] = df[col].min()
             stats['max'] = df[col].max()
             stats['missing_values'] = df[col].isnull().sum()
-        col_stats[col] = stats
+
+            # Histogram
+            col_stats[col] = stats
+            plt.hist(df[col].dropna(), bins=4)
+            plt.title(f"{col} distribution")
+            plt.xlabel(f"{col}")
+            plt.ylabel("frequency")
+            plt.show()
     return col_stats
 print(summarize_data(df))
