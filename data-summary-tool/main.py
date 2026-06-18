@@ -23,13 +23,18 @@ def summarize_data(df):
             stats['min'] = df[col].min()
             stats['max'] = df[col].max()
             stats['missing_values'] = df[col].isnull().sum()
-
-            # Histogram
             col_stats[col] = stats
+    return col_stats
+
+def plot_histogram(df, bins=4):
+    for col in df.columns:
+        if pd.api.types.is_numeric_dtype(df[col]):
             plt.hist(df[col].dropna(), bins=4)
             plt.title(f"{col} distribution")
             plt.xlabel(f"{col}")
             plt.ylabel("frequency")
             plt.show()
-    return col_stats
+    return None
+
 print(summarize_data(df))
+plot_histogram(df)
