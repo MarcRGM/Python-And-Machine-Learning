@@ -22,6 +22,7 @@ def summarize_data(df):
             stats['std'] = df[col].std()
             stats['min'] = df[col].min()
             stats['max'] = df[col].max()
+            stats['missing_values'] = df[col].isnull().sum()
         col_stats[col] = stats
     return col_stats
 print(summarize_data(df))
