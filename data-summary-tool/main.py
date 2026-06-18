@@ -9,9 +9,6 @@ data = {
 
 df = pd.DataFrame(data)
 
-mean = df["age"].mean()
-median = df["age"].median()
-
 def summarize_data(df):
     col_stats = {}
     for col in df.columns:
