@@ -17,6 +17,8 @@ def summarize_data(df):
     for col in df.columns:
         if pd.api.types.is_numeric_dtype(df[col]):
             stats['mean'] = df[col].mean()
-            stats['median'] = df[col].mean()
-
+            stats['median'] = df[col].median()
+            stats['std'] = df[col].std()
+            stats['min'] = df[col].min()
+            stats['max'] = df[col].max()
 summarize_data(df)
