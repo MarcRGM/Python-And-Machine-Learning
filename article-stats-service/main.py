@@ -31,7 +31,8 @@ def calculate_article_stats(text):
     stats = {
         "word_count": len(clean_words),
         "sentence_count": len(sentences),
-        "avg_sentence_length": round(len(clean_words) / len(sentences), 2) if sentences else 0
+        "avg_sentence_length": round(len(clean_words) / len(sentences), 2) if sentences else 0,
+        "top_5_words": [word for word, count in Counter(clean_words).most_common(5)]
     }
 
     return stats
@@ -73,6 +74,20 @@ def health_check():
     Health check endpoint to verify service is running.
     """
     return jsonify({"status": "healthy", "service": "article-stats"})
+
+@app.route('/', methods=['GET'])
+def index():
+    """
+    Root endpoint to provide basic information about available endpoints.
+    """
+    return jsonify({
+        "message": "Article Statistics Microservice",
+        "endpoints": {
+            "/analyze": "POST - Submit article text for analysis",
+            "/health": "GET - Check service health status",
+            "/": "GET - This documentation"
+        }
+    })
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
