@@ -23,7 +23,7 @@ def summarize_data(df):
             col_stats[col] = stats
     return col_stats
 
-def plot_histogram(df, bins=4):
+def plot_histograms(df, bins=4):
     for col in df.columns:
         if pd.api.types.is_numeric_dtype(df[col]):
             plt.hist(df[col].dropna(), bins=4)
