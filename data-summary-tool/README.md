@@ -7,7 +7,7 @@ with histograms.
 
 ## Features
 - Summarise any Pandas DataFrame with one function call.
-- Separate functions for statistics and plotting — use either independently.
+- Separate functions for statistics and plotting.
 - Count missing values per column.
 - Easily adjustable histogram bin size.
 
