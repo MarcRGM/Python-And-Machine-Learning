@@ -13,10 +13,15 @@ with histograms.
 
 ## Usage
 import pandas as pd
+
 from data_summary_tool import summarize_data, plot_histograms
+
 df = pd.read_csv('your_data.csv')
+
 stats = summarize_data(df)
+
 print(stats)
+
 plot_histograms(df)
 
 ## Technologies
