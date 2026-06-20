@@ -34,4 +34,4 @@ def plot_histograms(df, bins=4):
     return None
 
 print(summarize_data(df))
-plot_histogram(df)
+plot_histograms(df)
