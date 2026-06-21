@@ -6,7 +6,7 @@ data = {
     "score": [85, 90, 78, 92, 88, None, 76, 95]
 }
 
-age = np.array((data["age"]))
+age = np.array(data["age"])
 income = np.array(data["income"])
 score = np.array(data["score"])
 
