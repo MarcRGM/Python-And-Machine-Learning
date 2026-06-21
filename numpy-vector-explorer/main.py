@@ -6,9 +6,9 @@ data = {
     "score": [85, 90, 78, 92, 88, None, 76, 95]
 }
 
-age = np.array(data["age"])
-income = np.array(data["income"])
-score = np.array(data["score"])
+age = np.array(data["age"], dtype=float)
+income = np.array(data["income"], dtype=float)
+score = np.array(data["score"], dtype=float)
 
 def array_summary(arr):
     summary = {}
@@ -19,3 +19,5 @@ def array_summary(arr):
     summary["max"] = np.nanmax(arr)
     summary["missing_count"] = np.isnan(arr).sum()
     return summary
+
+print(array_summary(age))
