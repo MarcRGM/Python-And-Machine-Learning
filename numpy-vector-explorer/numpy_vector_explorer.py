@@ -6,9 +6,9 @@ data = {
     "score": [85, 90, 78, 92, 88, None, 76, 95]
 }
 
-age = np.array(data["age"], dtype=float)
-income = np.array(data["income"], dtype=float)
-score = np.array(data["score"], dtype=float)
+np_data = {}
+for col in data:
+    np_data[col] = np.array(data[col], dtype=float)
 
 def array_summary(arr):
     summary = {}
@@ -23,10 +23,11 @@ def array_summary(arr):
 def compare_ages(age):
     current_age_mean = np.nanmean(age)
     future_age_mean = np.nanmean(age+10)
-    return f"current age mean: {current_age_mean}, future age mean: {future_age_mean}"
+    return current_age_mean, future_age_mean
 
+for col in np_data:
+    print(array_summary(np_data[col]))
 
-print(array_summary(age))
-print(array_summary(income))
-print(array_summary(score))
-print (compare_ages(age))
+current, future = compare_ages(np_data["age"])
+print(f"Current mean age: {current:.2f}")
+print(f"Future mean age: {future:.2f}")
