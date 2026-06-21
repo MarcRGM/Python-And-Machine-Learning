@@ -20,4 +20,13 @@ def array_summary(arr):
     summary["missing_count"] = np.isnan(arr).sum()
     return summary
 
+def compare_ages(age):
+    current_age_mean = np.nanmean(age)
+    future_age_mean = np.nanmean(age+10)
+    return f"current age mean: {current_age_mean}, future age mean: {future_age_mean}"
+
+
 print(array_summary(age))
+print(array_summary(income))
+print(array_summary(score))
+print (compare_ages(age))
