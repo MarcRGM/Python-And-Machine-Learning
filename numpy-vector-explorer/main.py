@@ -10,3 +10,12 @@ age = np.array(data["age"])
 income = np.array(data["income"])
 score = np.array(data["score"])
 
+def array_summary(arr):
+    summary = {}
+    summary["mean"] = np.nanmean(arr)
+    summary["median"]= np.nanmedian(arr)
+    summary["std"] = np.nanstd(arr)
+    summary["min"] = np.nanmin(arr)
+    summary["max"] = np.nanmax(arr)
+    summary["missing_count"] = np.isnan(arr).sum()
+    return summary
