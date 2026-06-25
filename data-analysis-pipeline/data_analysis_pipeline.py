@@ -19,7 +19,7 @@ def clean_data(raw_df):
     missing_counts = {}
     for col in df.select_dtypes(include="number").columns:
         missing_counts[col] = df[col].isnull().sum()
-        df[col] = df[col].fillna(df[col].mean())
+        df[col] = df[col].fillna(df[col].median()) # median over mean to accomodate outliers
     return df, missing_counts
 
 def analyze_data(df, missing_values):
