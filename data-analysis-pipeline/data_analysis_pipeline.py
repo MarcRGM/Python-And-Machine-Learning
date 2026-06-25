@@ -14,12 +14,15 @@ def convert_csv(data):
 def load_data(filepath):
     return pd.read_csv(filepath)
 
-def clean_data(df):
+def clean_data(raw_df):
+    df = raw_df.copy # preserve raw_data
+    missing_counts = {}
     for col in df.select_dtypes(include="number").columns:
+        missing_counts[col] = df[col].isnull().sum()
         df[col] = df[col].fillna(df[col].mean())
-    return df
+    return df, missing_counts
 
-def analyze_data(df):
+def analyze_data(df, missing_values):
     summary = {}
     for col in df.select_dtypes(include="number").columns:
         np_data = {}
@@ -29,7 +32,7 @@ def analyze_data(df):
         np_data["std"] = np.nanstd(np_list)
         np_data["min"] = np.nanmin(np_list)
         np_data["max"] = np.nanmax(np_list)
-        np_data["missing_count"] = np.isnan(np_list).sum()
+        np_data["missing_count"] = missing_counts[col] # np.isnan(np_list).sum() returns 0 since it was already cleaned from clean_data()
         summary[col] = np_data
     return summary
 
@@ -55,6 +58,6 @@ def export_report(summary, df):
 
 convert_csv(data)
 raw_data = load_data("sample_data.csv")
-cleaned_df = clean_data(raw_data)
+cleaned_df, missing_counts = clean_data(raw_data)
 plot_distribution(cleaned_df)
-export_report(analyze_data(cleaned_df), cleaned_df)
+export_report(analyze_data(cleaned_df, missing_counts), cleaned_df)
