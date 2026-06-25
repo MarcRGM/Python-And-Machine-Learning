@@ -43,7 +43,7 @@ def plot_distribution(df):
         plt.xlabel(col)
         plt.ylabel("frequency")
         plt.savefig(f"{col}.png")
-        plt.close()
+        plt.close() # prevent histograms to inherit leftover bars from previous plots, plt.clf() to re-use plotting window
 
 def export_report(summary, df):
     report_lines = []
