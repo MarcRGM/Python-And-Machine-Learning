@@ -47,8 +47,9 @@ def export_report(summary, df):
     report_lines.append(f"Rows: {len(df)}, Columns: {len(df.columns)}")
     for col in summary:
         report_lines.append(f"{col} = {summary[col]}")
-    report_lines.append("Histograms: age.png, income.png, and score.png")
-
+    report_lines.append("Histograms:")
+    for col in df.columns:
+        report_lines.append(f"{col}.png")
     with open("report.txt", "w") as f:
         f.write("\n".join(report_lines))
 
