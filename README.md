@@ -11,3 +11,7 @@ Exploratory data analysis utility. Computes descriptive statistics and visualize
 ### NumPy Vector Explorer
 Numerical computing toolkit. Demonstrates array creation, NaN-aware statistics, and vectorized operations.
 - **Stack:** Python, NumPy
+
+### Data Analysis Pipeline
+A modular pipeline that loads, cleans, analyzes, visualizes, and reports on tabular data. Combines pandas, NumPy, and matplotlib into a reusable workflow.
+- **Stack:** Python, pandas, NumPy, matplotlib
