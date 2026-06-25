@@ -15,7 +15,7 @@ def load_data(filepath):
     return pd.read_csv(filepath)
 
 def clean_data(raw_df):
-    df = raw_df.copy # preserve raw_data
+    df = raw_df.copy() # preserve raw_data
     missing_counts = {}
     for col in df.select_dtypes(include="number").columns:
         missing_counts[col] = df[col].isnull().sum()
