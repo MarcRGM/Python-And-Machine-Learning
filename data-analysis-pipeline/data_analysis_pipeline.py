@@ -24,6 +24,15 @@ def analyze_data(df):
         summary[col] = np_data
     return summary
 
+def plot_distribution(df):
+    for col in df.select_dtypes(include="number").columns:
+        plt.hist(df[col], 4)
+        plt.title(f"{col} distribution")
+        plt.xlabel(col)
+        plt.ylabel("frequency")
+        plt.savefig(col)
+
+
 raw_data = load_data("sample_data.csv")
 cleaned_df = clean_data(raw_data)
-print(analyze_data(cleaned_df))
+plot_distribution(cleaned_df)
