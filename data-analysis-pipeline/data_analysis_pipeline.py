@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 data = {
     "age": [25, 30, 35, None, 40, 120, 29, 31],
@@ -37,12 +38,14 @@ def analyze_data(df, missing_values):
     return summary
 
 def plot_distribution(df):
+    os.makedirs("histograms", exist_ok=True) # creates the histogram directoryu only if it is missing, exist_ok=True prevents error if directory already exist
     for col in df.select_dtypes(include="number").columns:
         plt.hist(df[col], 4)
         plt.title(f"{col} distribution")
         plt.xlabel(col)
         plt.ylabel("frequency")
-        plt.savefig(f"{col}.png")
+        filepath = os.path.join("histograms", f"{col}.png") # save to histogram directory
+        plt.savefig(filepath)
         plt.close() # prevent histograms to inherit leftover bars from previous plots, plt.clf() to re-use plotting window
 
 def export_report(summary, df):
