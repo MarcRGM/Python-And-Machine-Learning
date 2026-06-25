@@ -2,6 +2,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+data = {
+    "age": [25, 30, 35, None, 40, 120, 29, 31],
+    "income": [50000, 60000, 75000, 80000, None, 95000, 62000, 58000],
+    "score": [85, 90, 78, 92, 88, None, 76, 95]
+}
+
+def convert_csv(data):
+    pd.DataFrame(data).to_csv('sample_data.csv', index=False)
+
 def load_data(filepath):
     return pd.read_csv(filepath)
 
@@ -43,6 +52,7 @@ def export_report(summary, df):
     with open("report.txt", "w") as f:
         f.write("\n".join(report_lines))
 
+convert_csv(data)
 raw_data = load_data("sample_data.csv")
 cleaned_df = clean_data(raw_data)
 plot_distribution(cleaned_df)
