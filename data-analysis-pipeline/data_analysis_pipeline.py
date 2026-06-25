@@ -44,7 +44,7 @@ def plot_distribution(df):
         plt.title(f"{col} distribution")
         plt.xlabel(col)
         plt.ylabel("frequency")
-        filepath = os.path.join("histograms", f"{col}.png") # save to histogram directory
+        filepath = os.path.join("histograms", f"{col}.png") # creates a file path
         plt.savefig(filepath)
         plt.close() # prevent histograms to inherit leftover bars from previous plots, plt.clf() to re-use plotting window
 
