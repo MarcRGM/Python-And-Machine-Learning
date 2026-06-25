@@ -42,7 +42,8 @@ def plot_distribution(df):
         plt.title(f"{col} distribution")
         plt.xlabel(col)
         plt.ylabel("frequency")
-        plt.savefig(col)
+        plt.savefig(f"{col}.png")
+        plt.close()
 
 def export_report(summary, df):
     report_lines = []
