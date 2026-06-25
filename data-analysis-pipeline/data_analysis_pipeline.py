@@ -2,8 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-def load_data(csv):
-    file_name = csv + ".csv"
-    return pd.read_csv(file_name)
+def load_data(filepath):
+    return pd.read_csv(filepath)
 
-print(load_data("sample_data"))
+raw_data = load_data("sample_data.csv")
