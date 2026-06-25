@@ -32,7 +32,18 @@ def plot_distribution(df):
         plt.ylabel("frequency")
         plt.savefig(col)
 
+def export_report(summary, df):
+    report_lines = []
+    report_lines.append("Data Analysis Report")
+    report_lines.append(f"Rows: {len(df)}, Columns: {len(df.columns)}")
+    for col in summary:
+        report_lines.append(f"{col} = {summary[col]}")
+    report_lines.append("Histograms: age.png, income.png, and score.png")
+
+    with open("report.txt", "w") as f:
+        f.write("\n".join(report_lines))
 
 raw_data = load_data("sample_data.csv")
 cleaned_df = clean_data(raw_data)
 plot_distribution(cleaned_df)
+export_report(analyze_data(cleaned_df), cleaned_df)
