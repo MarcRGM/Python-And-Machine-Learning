@@ -1,8 +1,8 @@
 Data Analysis Report
 Rows: 8, Columns: 3
-age = {'mean': np.float64(42.625), 'median': np.float64(31.0), 'std': np.float64(29.533614323343492), 'min': np.float64(25.0), 'max': np.float64(120.0), 'missing_count': np.int64(1)}
-income = {'mean': np.float64(67750.0), 'median': np.float64(62000.0), 'std': np.float64(13608.361400256828), 'min': np.float64(50000.0), 'max': np.float64(95000.0), 'missing_count': np.int64(1)}
-score = {'mean': np.float64(86.5), 'median': np.float64(88.0), 'std': np.float64(6.164414002968976), 'min': np.float64(76.0), 'max': np.float64(95.0), 'missing_count': np.int64(1)}
+age = {'mean': np.float64(42.625), 'median': np.float64(31.0), 'std': np.float64(29.533614323343492), 'min': np.float64(25.0), 'max': np.float64(120.0), 'missing_values': np.int64(1)}
+income = {'mean': np.float64(67750.0), 'median': np.float64(62000.0), 'std': np.float64(13608.361400256828), 'min': np.float64(50000.0), 'max': np.float64(95000.0), 'missing_values': np.int64(1)}
+score = {'mean': np.float64(86.5), 'median': np.float64(88.0), 'std': np.float64(6.164414002968976), 'min': np.float64(76.0), 'max': np.float64(95.0), 'missing_values': np.int64(1)}
 Histograms:
 age.png
 income.png

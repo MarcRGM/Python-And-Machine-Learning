@@ -33,7 +33,7 @@ def analyze_data(df, missing_values):
         np_data["std"] = np.nanstd(np_list)
         np_data["min"] = np.nanmin(np_list)
         np_data["max"] = np.nanmax(np_list)
-        np_data["missing_count"] = missing_counts[col] # np.isnan(np_list).sum() returns 0 since it was already cleaned from clean_data()
+        np_data["missing_values"] = missing_values[col] # np.isnan(np_list).sum() returns 0 since it# was already cleaned from clean_data()
         summary[col] = np_data
     return summary
 
@@ -62,6 +62,6 @@ def export_report(summary, df):
 
 convert_csv(data)
 raw_data = load_data("sample_data.csv")
-cleaned_df, missing_counts = clean_data(raw_data)
+cleaned_df, missing_values = clean_data(raw_data)
 plot_distribution(cleaned_df)
-export_report(analyze_data(cleaned_df, missing_counts), cleaned_df)
+export_report(analyze_data(cleaned_df, missing_values), cleaned_df)
