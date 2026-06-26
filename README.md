@@ -14,4 +14,4 @@ Numerical computing toolkit. Demonstrates array creation, NaN-aware statistics, 
 
 ### Data Analysis Pipeline
 A modular pipeline that loads, cleans, analyzes, visualizes, and reports on tabular data. Combines pandas, NumPy, and matplotlib into a reusable workflow.
-- **Stack:** Python, pandas, NumPy, matplotlib
+- **Stack:** Python, Pandas, NumPy, matplotlib
